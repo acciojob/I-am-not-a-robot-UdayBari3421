@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function resetGame() {
     selectedImages = [];
-    submitButton.style.display = 'none';
-    resetButton.style.display = 'none';
+    submitButton.style.visibility = 'none';
+    resetButton.style.visibility = 'none';
     h3.innerText = 'Please click on the identical tiles to verify that you are not a robot.';
     images.forEach(img => img.classList.remove('selected'));
 	p.style.display = "none";
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         p.innerText = 'We can\'t verify you as a human. You selected the non-identical tiles.';
 		p.style.display = "block";
       }
-      submitButton.style.display = 'none';
+      submitButton.style.visibility = 'none';
       resetButton.style.display = 'inline-block'; 
     }
   }
