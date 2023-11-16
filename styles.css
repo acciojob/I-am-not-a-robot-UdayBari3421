@@ -49,3 +49,6 @@ form{
 	display: flex;
 	flex-direction: column;
 }
+#h3{
+	display: none;
+}

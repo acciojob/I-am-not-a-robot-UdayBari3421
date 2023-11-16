@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const resetButton = document.querySelector('button[type="reset"]');
   const submitButton = document.querySelector('button[type="submit"]');
   const h3 = document.querySelector('h3');
-
+  const p = document.querySelector('p');
   let selectedImages = [];
 
   function shuffleImages() {
     const imageSources = ["https://picsum.photos/id/237/200/300", "https://picsum.photos/seed/picsum/200/300", "https://picsum.photos/200/300?grayscale", "https://picsum.photos/200/300/", "https://picsum.photos/200/300.jpg"];
-    imageSources.push(imageSources[Math.floor(Math.random() * 5)]); // Add a copy
-    imageSources.sort(() => Math.random() - 0.5); // Shuffle the array
+    imageSources.push(imageSources[Math.floor(Math.random() * 5)]);
+    imageSources.sort(() => Math.random() - 0.5); 
 
     images.forEach((img, index) => {
       img.src = imageSources[index];
@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     resetButton.style.display = 'none';
     h3.innerText = 'Please click on the identical tiles to verify that you are not a robot.';
     images.forEach(img => img.classList.remove('selected'));
+	p.style.display = "none";
   }
 
   function handleImageClick(index) {
@@ -40,10 +41,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (selectedImages.length === 2) {
       if (images[selectedImages[0]].src === images[selectedImages[1]].src) {
-        h3.innerText = 'You are a human. Congratulations!';
+		p.style.display = "block";
+        p.innerText = 'You are a human. Congratulations!';
       } else {
-        h3.innerText = 'We can\'t verify you as a human. You selected the non-identical tiles.';
+        p.innerText = 'We can\'t verify you as a human. You selected the non-identical tiles.';
+		p.style.display = "block";
       }
+      submitButton.style.display = 'none';
+      resetButton.style.display = 'inline-block'; 
     }
   }
 
