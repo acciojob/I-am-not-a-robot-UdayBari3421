@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function shuffleImages() {
     const imageSources = ["https://picsum.photos/id/237/200/300", "https://picsum.photos/seed/picsum/200/300", "https://picsum.photos/200/300?grayscale", "https://picsum.photos/200/300/", "https://picsum.photos/200/300.jpg"];
-    imageSources.push(imageSources[Math.floor(Math.random() * 5)]);
-    imageSources.sort(() => Math.random() - 0.5); 
+    imageSources.push(imageSources[Math.floor(Math.random() * 5)]); // Add a copy
+    imageSources.sort(() => Math.random() - 0.5); // Shuffle the array
 
     images.forEach((img, index) => {
       img.src = imageSources[index];
@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function resetGame() {
     selectedImages = [];
-    submitButton.style.visibility = 'none';
-    resetButton.style.visibility = 'none';
+    submitButton.style.display = 'none';
+    resetButton.style.display = 'none';
     h3.innerText = 'Please click on the identical tiles to verify that you are not a robot.';
     images.forEach(img => img.classList.remove('selected'));
 	p.style.display = "none";
@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', function () {
         p.innerText = 'We can\'t verify you as a human. You selected the non-identical tiles.';
 		p.style.display = "block";
       }
-      submitButton.style.visibility = 'none';
-      resetButton.style.display = 'inline-block'; 
+      submitButton.style.display = 'none';
+      resetButton.style.display = 'inline-block';
     }
   }
 
